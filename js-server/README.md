@@ -6,7 +6,7 @@ Inspired by ironlauncher (ironhack generator for bootcamp students) I decided to
 
 This generator uses async/await for those. Also the error handling is a little bit more global and can give you more hints when prints out information.
 
-This uses the `"type": "module"` in the `package.json` so you can use the `import/export` syntax. 
+This uses the `"type": "module"` in the `package.json` so you can use the `import/export` syntax.
 
 ## Installation
 

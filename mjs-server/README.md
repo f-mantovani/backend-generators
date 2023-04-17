@@ -6,7 +6,7 @@ Inspired by ironlauncher (ironhack generator for bootcamp students) I decided to
 
 This generator uses async/await for those. Also the error handling is a little bit more global and can give you more hints when prints out information.
 
-This uses the `.mjs` file extension so you can use the `import/export` syntax. But we need the `Babel` transpiller to run the tests with jest. 
+This uses the `.mjs` file extension so you can use the `import/export` syntax. But we need the `Babel` transpiller to run the tests with jest.
 
 ## Installation
 
