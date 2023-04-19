@@ -1,9 +1,10 @@
 import 'dotenv/config'
 import express, { Express, NextFunction, Request } from 'express'
 import cors from 'cors'
-import log from './utils/logger'
+import log, { requestLogger } from './utils/logger'
 import { routes } from './routes'
 import { connectDB } from './utils/connectDB'
+import { errorHandling } from './routes/errorHandling'
 
 export const app: Express = express()
 
@@ -14,10 +15,9 @@ export async function main() {
 	
 	app.use(express.json())
 
-	app.use((req: Request, _, next: NextFunction) => {
-		log.info(`${req.method} ${req.path}`)
-		next()
-	})
-
+	app.use(requestLogger)
+	
 	app.use('/api', routes())
+
+	errorHandling(app)
 }
