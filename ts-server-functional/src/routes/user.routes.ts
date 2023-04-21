@@ -7,4 +7,5 @@ export function userRoutes(){
   router.get('/', createUserHandler)
 
   return router
+  
 }
