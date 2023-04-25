@@ -4,6 +4,7 @@ import log from '../utils/logger'
 import { CreateUserInput } from '../schema/user.schema'
 import { comparePassword, hashPassword } from '../utils/passwordHandler'
 import { throwError } from '../utils/throwError'
+import { createToken } from '../utils/tokenHandler'
 
 export async function createUserHandler(
 	req: Request<{}, {}, CreateUserInput['body']>,
@@ -29,7 +30,7 @@ export async function login(
 	req: Request<{}, {}, CreateUserInput['body']>,
 	res: Response,
 	next: NextFunction
-){
+) {
 	try {
 		const userFromDB = await findUser(req.body.username).select('+password')
 
@@ -42,8 +43,14 @@ export async function login(
 		if (!verifyPassword) {
 			throwError(!verifyPassword, 400, 'signup', "We couldn't authenticate the user")
 		}
-	
-		return res.status(200).json(userFromDB)
+
+		const payload = {
+			username: userFromDB!.username,
+		}
+
+		const token = createToken(payload)
+
+		return res.status(200).json({ token })
 	} catch (err: any) {
 		next(err)
 	}
