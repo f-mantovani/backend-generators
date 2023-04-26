@@ -15,3 +15,4 @@ export const createUserSchema = z.object({
 })
 
 export type CreateUserInput = z.TypeOf<typeof createUserSchema>
+
