@@ -5,8 +5,7 @@ import log, { requestLogger } from './utils/logger'
 import { routes } from './routes'
 import { connectDB } from './utils/connectDB'
 import { errorHandling } from './routes/errorHandling'
-import { swaggerDocument } from './API-docs/swagger'
-import swaggerUi from 'swagger-ui-express'
+
 
 export const app: Express = express()
 
@@ -21,7 +20,6 @@ export async function main() {
 
 	app.use(requestLogger)
 
-	app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 	
 	app.use('/api', routes())
 
