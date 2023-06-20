@@ -11,7 +11,26 @@ export const userErrorResponse = {
 		},
 	},
 	example: {
-		message: 'Missing username',
-		place: 'Validate',
+		'Missing username': {
+			username: 'Username is required',
+			place: 'Validate',
+		},
+		'Missing password': {
+			password: 'Password is required',
+			place: 'Validate',
+		},
+	},
+}
+
+export const userCreatedResponse = {
+	type: 'object',
+	items: {
+		username: {
+			type: 'string',
+			description: 'Username chosen on signup',
+		},
+	},
+	example: {
+		username: 'johndoe',
 	},
 }

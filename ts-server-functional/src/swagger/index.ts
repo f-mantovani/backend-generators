@@ -1,4 +1,4 @@
-import { userErrorResponse } from './userRoutes/userSchemas'
+import { userErrorResponse, userCreatedResponse } from './userRoutes/userSchemas'
 import { createUser } from './userRoutes/users.swagger'
 
 export const swaggerDocument = {
@@ -22,6 +22,7 @@ export const swaggerDocument = {
 	components: {
 		schemas: {
 			UserErrorResponse: userErrorResponse,
+			UserCreatedResponse: userCreatedResponse
 		},
 	},
 }

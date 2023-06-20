@@ -15,17 +15,8 @@ export const createUser = {
 			content: {
 				'application/json': {
 					schema: {
-						type: 'object',
-						items: {
-							username: {
-								type: 'string',
-								description: 'Username chosen on signup',
-							},
-						},
-						example: {
-							username: 'johndoe',
-						},
-					},
+						$ref: '#/components/schemas/UserCreatedResponse',
+					}
 				},
 			},
 		},
@@ -36,19 +27,8 @@ export const createUser = {
 					schema: {
 						$ref: '#/components/schemas/UserErrorResponse',
 					},
-					example: {
-						'Missing username': {
-							username: 'Username is required',
-							place: 'Validate',
-						},
-						'Missing password': {
-							password: 'Password is required',
-							place: 'Validate',
-						},
-					},
 				},
 			},
 		},
 	},
 }
-
