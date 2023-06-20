@@ -1,5 +1,6 @@
-import { Document, Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import { hashPassword } from '../utils/passwordHandler'
+import { NextFunction } from 'express'
 
 export interface IUser {
   username: string
@@ -23,8 +24,8 @@ const userSchema = new Schema<IUser>(
 	{ timestamps: true }
 )
 
-userSchema.pre('save', async function(next) {
-	let user = this 
+userSchema.pre('save', async (next: NextFunction) => {
+	let user: IUser | undefined = this
 
 	if(!user.isModified('password')){
 		return next()
