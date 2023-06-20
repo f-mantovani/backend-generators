@@ -24,7 +24,7 @@ export const userErrorResponse = {
 
 export const userCreatedResponse = {
 	type: 'object',
-	items: {
+	properties: {
 		username: {
 			type: 'string',
 			description: 'Username chosen on signup',
@@ -33,4 +33,19 @@ export const userCreatedResponse = {
 	example: {
 		username: 'johndoe',
 	},
+}
+
+export const userRequest = {
+	type: 'object',
+	properties: {
+		username: {
+			type: 'string',
+			description: 'The username of the user.',
+		},
+		password: {
+			type: 'string',
+			description: 'The password of the user.',
+		},
+	},
+	required: ['username', 'password'],
 }

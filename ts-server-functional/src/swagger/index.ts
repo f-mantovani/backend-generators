@@ -1,5 +1,6 @@
-import { userErrorResponse, userCreatedResponse } from './userRoutes/userSchemas'
+import { userErrorResponse, userCreatedResponse, userRequest } from './userRoutes/userSchemas.swagger'
 import { createUser } from './userRoutes/users.swagger'
+
 
 export const swaggerDocument = {
 	openapi: '3.0.1',
@@ -13,16 +14,18 @@ export const swaggerDocument = {
 			github: 'https://github.com/f-mantovani',
 		},
 	},
+	schemas: {
+		user: {
+			UserErrorResponse: userErrorResponse,
+			UserCreatedResponse: userCreatedResponse,
+			UserRequest: userRequest,
+		},
+	},
+
 	tags: [{ name: 'User' }],
 	paths: {
 		'/api/user/signup': {
 			post: createUser,
-		},
-	},
-	components: {
-		schemas: {
-			UserErrorResponse: userErrorResponse,
-			UserCreatedResponse: userCreatedResponse
 		},
 	},
 }

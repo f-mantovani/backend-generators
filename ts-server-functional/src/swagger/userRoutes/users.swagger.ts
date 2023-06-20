@@ -1,22 +1,23 @@
 export const createUser = {
 	tags: ['User'],
-	description: 'Creates a new user',
-	responses: {
-		headers: {
-			'swagger-ui': {
-				description: 'The origin of the Swagger documentation page',
+	summary: 'Creates a new user',
+	requestBody: {
+		content: {
+			'application/json': {
 				schema: {
-					type: 'string',
+					$ref: '#/schemas/user/UserRequest',
 				},
 			},
 		},
+	},
+	responses: {
 		201: {
 			description: 'The username that was created',
 			content: {
 				'application/json': {
 					schema: {
-						$ref: '#/components/schemas/UserCreatedResponse',
-					}
+						$ref: '#/schemas/user/UserCreatedResponse',
+					},
 				},
 			},
 		},
@@ -25,7 +26,7 @@ export const createUser = {
 			content: {
 				'application/json': {
 					schema: {
-						$ref: '#/components/schemas/UserErrorResponse',
+						$ref: '#/schemas/user/UserErrorResponse',
 					},
 				},
 			},
